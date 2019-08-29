@@ -1,0 +1,32 @@
+# docker-compose.yml
+version: '3'
+#
+services:
+  bend:
+    image: bend
+    build: 
+      context: ./bend
+      dockerfile: ./Dockerfile
+    ports:
+      - 9000:9000
+    networks:
+      - the-net
+
+  front:
+    image: fend
+    build: 
+      context: ./fend
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    networks: 
+      - the-net
+    depends_on:
+      - bend
+    entrypoint: ./wait-for-it.sh the-net:9000  -- npm start
+
+ 
+
+networks:
+  the-net:
+ 
