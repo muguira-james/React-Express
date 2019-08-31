@@ -5,7 +5,7 @@ services:
   mongodb:
     image: mongo
     build:
-      context: ./bend
+      context: ./mongo
       dockerfile: Dockerfile-mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root 
