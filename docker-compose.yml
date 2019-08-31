@@ -2,17 +2,35 @@
 version: '3'
 #
 services:
+  mongodb:
+    image: mongo
+    build:
+      context: ./bend
+      dockerfile: Dockerfile-mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root 
+      - MONGO_INITDB_ROOT_PASSWORD=mysql
+    ports:
+      - 27017:27017
+    volumes:
+      - DBTestStorage:/data
+    
+    networks:
+      - the-net
   bend:
     image: bend
     build: 
       context: ./bend
       dockerfile: ./Dockerfile
+    depends_on:
+      - mongodb
+    entrypoint: ./wait-for-it.sh the-net:27017  -- npm start
     ports:
       - 9000:9000
     networks:
       - the-net
 
-  front:
+  fend:
     image: fend
     build: 
       context: ./fend
@@ -26,7 +44,11 @@ services:
     entrypoint: ./wait-for-it.sh the-net:9000  -- npm start
 
  
-
+volumes:
+  DBTestStorage:
 networks:
   the-net:
  
+
+
+
