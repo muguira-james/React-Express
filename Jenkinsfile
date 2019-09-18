@@ -17,7 +17,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cd fend && npm test'
+                dir('fend') {
+                    sh 'npm test'
+                }
             }
         }
         stage('Deliver') {
