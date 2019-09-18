@@ -6,12 +6,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                dir('bend') {
+                    sh 'npm install'
+                }
+                dir('fend') {
+                    sh 'npm install'
+                    sh 'npm test'
+                }
             }
         }
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh 'cd fend && npm test'
             }
         }
         stage('Deliver') {
