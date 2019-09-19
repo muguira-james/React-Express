@@ -30,9 +30,12 @@ pipeline {
                     script {
                         docker.build("muguirajames/bend")
                     }
-                    
                 }
-                
+                dir('fend') {
+                    script {
+                        docker.build('muguirajames/fend')
+                    }
+                }
             }
             
             
