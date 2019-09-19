@@ -27,8 +27,10 @@ pipeline {
             
             steps {
                 dir('bend') {
+                    script {
+                        docker.build("muguirajames/bend")
+                    }
                     
-                    app = docker.build("muguirajames/bend")
                 }
                 
             }
