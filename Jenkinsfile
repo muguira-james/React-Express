@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    agent { dockerfile true }
     environment {
         CI = 'true'
     }
@@ -26,7 +27,7 @@ pipeline {
             
             steps {
                 dir('bend') {
-                    agent { dockerfile true }
+                    
                     sh 'build-container.sh'
                 }
                 
