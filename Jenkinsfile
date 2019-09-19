@@ -23,6 +23,7 @@ pipeline {
             }
         }
         stage('Deliver') {
+            agent { dockerfile true }
             steps {
                 dir('bend') {
                     sh 'build-container.sh'
