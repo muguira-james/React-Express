@@ -28,7 +28,7 @@ pipeline {
             steps {
                 dir('bend') {
                     
-                    sh 'build-container.sh'
+                    sh 'docker build -t muguirajames/bend .'
                 }
                 
             }
