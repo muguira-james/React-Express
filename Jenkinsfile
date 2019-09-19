@@ -23,13 +23,16 @@ pipeline {
             }
         }
         stage('Deliver') {
-            agent { dockerfile true }
-            steps {
-                dir('bend') {
-                    sh 'build-container.sh'
+            dir('bend') {
+                agent { dockerfile true }
+                steps {
+                    dir('bend') {
+                        sh 'build-container.sh'
+                    }
+                    
                 }
-                
             }
+            
         }
     }
 }
