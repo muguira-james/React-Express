@@ -3,6 +3,8 @@ pipeline {
     
     environment {
         CI = 'true'
+        bendImage = ''
+        fendImage = ''
     }
     stages {
         stage('Build') {
@@ -28,12 +30,12 @@ pipeline {
             steps {
                 dir('bend') {
                     script {
-                        docker.build("muguirajames/bend")
+                        bendImage = docker.build("muguirajames/bend")
                     }
                 }
                 dir('fend') {
                     script {
-                        docker.build('muguirajames/fend')
+                        fendImage = docker.build('muguirajames/fend')
                     }
                 }
             }
