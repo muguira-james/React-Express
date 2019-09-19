@@ -1,1 +1,1 @@
-docker-compose build
+docker build -t muguirajames/bend:0.1 .
