@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh 'docker-compose build'
+                sh 'build-container.sh'
             }
         }
     }
