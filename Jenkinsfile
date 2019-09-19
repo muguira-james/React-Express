@@ -24,7 +24,10 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh 'build-container.sh'
+                dir('bend') {
+                    sh 'build-container.sh'
+                }
+                
             }
         }
     }
