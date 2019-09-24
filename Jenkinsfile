@@ -20,12 +20,16 @@ pipeline {
                 dir('fend') {
                     sh 'npm test'
                 }
+                dir('bend') {
+                    sh 'npm test'
+                }
             }
         }
-        stage('Deliver') {
+ /*       stage('Deliver') {
             steps {
                 sh 'docker-compose build'
             }
         }
+*/
     }
 }
