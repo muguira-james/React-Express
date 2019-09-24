@@ -25,7 +25,7 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
+/*        stage('Deliver') {
             
             steps {
                 dir('bend') {
@@ -41,6 +41,6 @@ pipeline {
             }
             
             
-        }
+        } */
     }
 }
