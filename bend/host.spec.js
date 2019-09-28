@@ -17,7 +17,7 @@ describe("get all players", () => {
 describe("test players", () => {
 
 
-    it("first player name = Jaon Jet", async () => {
+    it("first player name = Joan Jet", async () => {
         const result = await userAPI.getAllPlayers()
 
         console.log("-->", result[0].FirstName)
